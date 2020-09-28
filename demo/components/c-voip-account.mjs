@@ -26,17 +26,16 @@ window.customElements.define(
               switch (dataset.action) {
                 case 'register':
                   {
-                    sipClient.client.sayHello();
                     const userId = this.nodes.userIdInput.value;
                     const password = this.nodes.passwordInput.value;
-                    // sipClient.setAccount(userId, password);
-                    // sipClient.setClient();
-                    // sipClient.registerAccount();
+                    sipClient.setAccount(userId, password);
+                    sipClient.setClient();
+                    sipClient.registerAccount();
                     console.log('register');
                   }
                   break;
                 case 'unregister':
-                  // sipClient.unregisterAccount();
+                  sipClient.unregisterAccount();
                   console.log('unregister');
                   break;
                 case 'reconfigure':
@@ -86,7 +85,7 @@ window.customElements.define(
       this.nodes.passwordInput.value = CONF.password;
       this.nodes.userIdInput.value = CONF.authorizationUserId;
 
-      // sipClient.callingEvents.addEventListener('clientStatusUpdate', this);
+      sipClient.callingEvents.addEventListener('clientStatusUpdate', this);
     }
 
     disconnectedCallback() {
@@ -96,7 +95,7 @@ window.customElements.define(
 
       this.actions.dndToggle.removeEventListener('change', this);
 
-      // sipClient.callingEvents.removeEventListener('clientStatusUpdate', this);
+      sipClient.callingEvents.removeEventListener('clientStatusUpdate', this);
     }
   }
 );
