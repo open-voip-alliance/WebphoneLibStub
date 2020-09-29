@@ -1,6 +1,6 @@
 {
   "name": "webphone-lib-stub",
-  "version": "0.0.1",
+  "version": "0.2.14-beta.0",
   "description": "Webphone Lib Stub",
   "author": "Open VoIP Alliance",
   "license": "MIT",
@@ -9,30 +9,14 @@
   "scripts": {
     "clean": "rm -fR dist/* build/*",
     "build": "npm run clean && rollup -c",
-    "build-watch": "npm run clean && rollup -cw",
-    "serve": "serve -l 1235",
-    "demo": "run-p build-watch serve",
     "typecheck": "tsc",
     "lint": "eslint \"src/**/*.ts\"",
-    "prepare": "npm run lint && npm run build",
-    "docs": "typedoc --out docs src"
+    "prepare": "npm run lint && npm run build"
   },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  },
-  "ava": {
-    "require": [
-      "esm",
-      "ts-node/register",
-      "./test/_setup-browser-env.js"
-    ],
-    "extensions": [
-      "ts"
-    ],
-    "babel": false,
-    "compileEnhancements": false
   },
   "nyc": {
     "require": [
@@ -47,12 +31,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:open-voip-alliance/WebphoneLib.git"
+    "url": "git@github.com:open-voip-alliance/WebphoneLibStub.git"
   },
   "files": [
     "src",
     "dist",
-    "test",
     "README.md"
   ],
   "devDependencies": {
@@ -78,10 +61,8 @@
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript2": "^0.24.3",
-    "serve": "^11.3.2",
     "sinon": "^7.5.0",
     "ts-node": "^8.4.1",
-    "typedoc": "^0.15.0",
     "typescript": "^3.6.3"
   }
 }

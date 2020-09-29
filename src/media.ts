@@ -1,7 +1,9 @@
 import { EventEmitter } from 'events';
 
 class MediaSingleton extends EventEmitter {
-  public init() {}
+  public init() {
+    return undefined;
+  }
 
   public requestPermission(): Promise<void> {
     return Promise.resolve();

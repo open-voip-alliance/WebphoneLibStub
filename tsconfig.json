@@ -8,7 +8,7 @@
   "include": ["src"],
   "typedocOptions": {
     "mode": "file",
-    "name": "Webphone Lib",
+    "name": "Webphone Lib Stub",
     "excludeNotExported": true,
     "excludePrivate": true
   }

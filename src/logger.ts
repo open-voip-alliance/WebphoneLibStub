@@ -1,7 +1,7 @@
 interface ILoggerConnector {
   level: string;
   message: string;
-  context: any;
+  context: string;
 }
 
 type LoggerConnector = (connector: ILoggerConnector) => void;

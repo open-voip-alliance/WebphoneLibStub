@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events';
+import { ISession } from './session';
 
 enum ClientStatus {
   CONNECTING = 'connecting',
@@ -16,19 +17,43 @@ export class Client extends EventEmitter {
   //   }
   status: ClientStatus;
 
+  private connected = false;
+
   public connect(): Promise<boolean> {
     this.updateStatus(ClientStatus.CONNECTED);
+    this.connected = true;
     return Promise.resolve(true);
   }
 
   public disconnect(): Promise<void> {
     this.updateStatus(ClientStatus.DISCONNECTED);
+    this.connected = false;
     return Promise.resolve();
   }
 
   public reconfigure(): Promise<void> {
     this.updateStatus(ClientStatus.CONNECTED);
     return Promise.resolve();
+  }
+
+  public subscribe(): Promise<void> {
+    return Promise.resolve();
+  }
+
+  public unsubscribe(): void {
+    return;
+  }
+
+  public isConnected(): boolean {
+    return this.connected;
+  }
+
+  public invite(): Promise<ISession> {
+    return;
+  }
+
+  public getSessions(): ISession[] {
+    return [];
   }
 
   private updateStatus(status: ClientStatus): void {
