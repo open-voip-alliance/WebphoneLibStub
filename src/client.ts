@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events';
 import { ISession } from './session';
+import Publisher from './publisher';
 
 enum ClientStatus {
   CONNECTING = 'connecting',
@@ -11,10 +12,6 @@ enum ClientStatus {
 }
 
 export class Client extends EventEmitter {
-  //   constructor(uaFactory, transportFactory, options) {
-  //     super();
-  //     this.status;
-  //   }
   status: ClientStatus;
 
   private connected = false;
@@ -54,6 +51,10 @@ export class Client extends EventEmitter {
 
   public getSessions(): ISession[] {
     return [];
+  }
+
+  public createPublisher(): Publisher {
+    return new Publisher();
   }
 
   private updateStatus(status: ClientStatus): void {
