@@ -17,14 +17,14 @@ export class Client extends EventEmitter {
   private connected = false;
 
   public connect(): Promise<boolean> {
-    this.updateStatus(ClientStatus.CONNECTED);
     this.connected = true;
+    this.updateStatus(ClientStatus.CONNECTED);
     return Promise.resolve(true);
   }
 
   public disconnect(): Promise<void> {
-    this.updateStatus(ClientStatus.DISCONNECTED);
     this.connected = false;
+    this.updateStatus(ClientStatus.DISCONNECTED);
     return Promise.resolve();
   }
 
